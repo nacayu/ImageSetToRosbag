@@ -8,4 +8,13 @@
 
 # Usage
 
-Let us use roslaunch in launch/
+Let us use roslaunch in launch/rosbag_record.launch
+
+# Data directory
+
+## Image data
+- image_data/
+
+## ROS bag generation output
+
+- bag/
