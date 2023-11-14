@@ -1,0 +1,15 @@
+<launch>
+        <arg name="image_input_path" default="$(find rosbag_generate)/image_data/illuminance/"/>
+        <arg name="rosbag_output_path" default="$(find rosbag_generate)/bag/illuminance.bag"/>
+        <arg name="rosbag_topic_name" default="/image_raw"/>
+        <arg name="publish_rate" default="2"/>
+
+    <node name="rosbag_generate" pkg="rosbag_generate" type="rosbag_generate_node" output="screen" respawn="true">
+        <param name="image_input_path" value="$(arg image_input_path)"/>
+        <param name="rosbag_topic_name" value="$(arg rosbag_topic_name)"/>
+        <param name="publish_rate" value="$(arg publish_rate)"/>
+    </node>
+    <!-- rosbag record -->
+    <node name="rosbag_record" pkg="rosbag" type="record" output="screen" args="-O $(arg rosbag_output_path) $(arg rosbag_topic_name)"/>
+
+</launch>
